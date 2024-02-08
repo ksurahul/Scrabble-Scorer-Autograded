@@ -14,7 +14,7 @@ const oldPointStructure = {
 
 function oldScrabbleScorer(word) {
 	word = word.toUpperCase();
-	let letterPoints = "";
+	let letterPoints = ""; 
  
 	for (let i = 0; i < word.length; i++) {
  
@@ -65,11 +65,20 @@ let vowelBonusScorer = function(word) {
    return points;
 };
 
-let scrabbleScorer = function(){
-   //to work on - not entirely sure what to do here
-   //name implies it should return a score
-   //should this be using transform function?
+let scrabbleScorer = function(word) {
+   word = word.toLowerCase(); //lowercase the word passed in
+   let points = 0; 
+
+   //iterate through every letter in the word
+   for (let i = 0; i < word.length; i++) {
+
+      //adds value of letter to points
+      if(word[i] in newPointStructure) {
+         points = points + newPointStructure[word[i]]
+     }
+   }
    
+   return points
 };
 
 const scoringAlgorithms = [
